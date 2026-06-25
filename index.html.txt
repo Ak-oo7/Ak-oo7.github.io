@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhinav I | AI Engineer • ML Engineer • Data Scientist</title>
+  <meta
+    name="description"
+    content="Abhinav I - AI Engineer, Machine Learning Engineer, Data Scientist, and Generative AI Developer. Portfolio featuring AI, ML, CV, RAG, and data science projects."
+  />
+  <meta
+    name="keywords"
+    content="Abhinav I, AI Engineer, Machine Learning Engineer, Data Scientist, Generative AI Developer, Portfolio, RAG, LLM, Computer Vision, Deep Learning"
+  />
+  <meta name="author" content="Abhinav I" />
+  <meta name="theme-color" content="#0b1020" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Abhinav I | AI Engineer • ML Engineer • Data Scientist" />
+  <meta
+    property="og:description"
+    content="Modern personal portfolio of Abhinav I featuring AI, ML, Generative AI, Computer Vision, and Data Science projects."
+  />
+  <meta property="og:url" content="[ak-oo7.github.io](https://ak-oo7.github.io/)" />
+  <meta property="og:image" content="[ak-oo7.github.io](https://ak-oo7.github.io/assets/og-preview.png)" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Abhinav I | AI Engineer • ML Engineer • Data Scientist" />
+  <meta
+    name="twitter:description"
+    content="Portfolio of Abhinav I - AI Engineer, Machine Learning Engineer, Data Scientist, and Generative AI Developer."
+  />
+  <meta name="twitter:image" content="[ak-oo7.github.io](https://ak-oo7.github.io/assets/og-preview.png)" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)" />
+  <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin />
+  <link
+    href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap)"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+  <script type="application/ld+json">
+    {
+      "@context": "[schema.org](https://schema.org)",
+      "@type": "Person",
+      "name": "Abhinav I",
+      "jobTitle": "AI Engineer",
+      "url": "[ak-oo7.github.io](https://ak-oo7.github.io/)",
+      "sameAs": [
+        "[github.com](https://github.com/Ak-oo7)",
+        "[linkedin.com](https://www.linkedin.com/)"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Vimal Jyothi Engineering College"
+      },
+      "knowsAbout": [
+        "Machine Learning",
+        "Deep Learning",
+        "Computer Vision",
+        "Generative AI",
+        "Large Language Models",
+        "RAG",
+        "Data Science"
+      ]
+    }
+  </script>
+</head>
+<body>
+  <div id="loader" class="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <div class="loader-logo">AI</div>
+      <p>Loading portfolio...</p>
+    </div>
+  </div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="header">
+    <div class="container nav-wrap glass">
+      <a href="#home" class="brand" aria-label="Abhinav I Home">
+        <span class="brand-mark">AI</span>
+        <span class="brand-text">Abhinav I</span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#github">GitHub</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button
+          id="themeToggle"
+          class="icon-btn"
+          type="button"
+          aria-label="Toggle light and dark mode"
+          title="Toggle theme"
+        >
+          <span class="theme-icon theme-sun">☀</span>
+          <span class="theme-icon theme-moon">☾</span>
+        </button>
+        <button
+          id="menuToggle"
+          class="icon-btn mobile-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="nav"
+        >
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero section" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">AI • ML • Data • GenAI</p>
+          <h1>
+            Building intelligent systems
+            <span class="gradient-text">that feel premium, useful, and human.</span>
+          </h1>
+          <p class="hero-subtitle">
+            I'm <strong>Abhinav I</strong>, a Computer Science undergraduate specializing in
+            Artificial Intelligence and Data Science.
+          </p>
+          <div class="typing-line" aria-label="Professional roles">
+            <span class="typing-prefix">I work as </span>
+            <span id="typedText" class="typed-text"></span>
+            <span class="typed-caret" aria-hidden="true"></span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="resume.pdf" download>Download Resume</a>
+            <a class="btn btn-secondary" href="[github.com](https://github.com/Ak-oo7)" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a class="btn btn-secondary" href="[linkedin.com](https://www.linkedin.com/)" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="btn btn-secondary" href="#contact">Contact</a>
+          </div>
+          <div class="hero-metrics">
+            <div class="metric glass">
+              <span class="metric-number">5+</span>
+              <span class="metric-label">Featured Projects</span>
+            </div>
+            <div class="metric glass">
+              <span class="metric-number">8.82</span>
+              <span class="metric-label">CGPA</span>
+            </div>
+            <div class="metric glass">
+              <span class="metric-number">AI</span>
+              <span class="metric-label">Focused Career Path</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual reveal">
+          <div class="hero-card glass floating">
+            <div class="hero-card-top">
+              <span class="status-pill">Open to opportunities</span>
+              <span class="status-dot"></span>
+            </div>
+            <div class="hero-card-body">
+              <h2>Abhinav I</h2>
+              <p>AI Engineer</p>
+              <div class="hero-tech-stack">
+                <span>ML</span>
+                <span>LLMs</span>
+                <span>RAG</span>
+                <span>CV</span>
+                <span>Flask</span>
+                <span>TensorFlow</span>
+              </div>
+            </div>
+            <div class="hero-wave">
+              <div class="wave wave-1"></div>
+              <div class="wave wave-2"></div>
+              <div class="wave wave-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">About</p>
+          <h2>Engineering AI systems with clarity, performance, and intent.</h2>
+        </div>
+        <div class="about-card glass reveal">
+          <p>
+            I am a <strong>Computer Science undergraduate</strong> specializing in
+            <strong>Artificial Intelligence and Data Science</strong>, with a strong passion for
+            <strong>Machine Learning</strong>, <strong>Deep Learning</strong>,
+            <strong>Computer Vision</strong>, <strong>Generative AI</strong>,
+            <strong>LLMs</strong>, <strong>Retrieval-Augmented Generation (RAG)</strong>, and
+            <strong>AI Automation</strong>.
+          </p>
+          <p>
+            I actively contribute as an <strong>IEEE Design Lead</strong> and have experience
+            building intelligent AI applications while mentoring students through internships and
+            collaborative technical initiatives.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Education</p>
+          <h2>Academic foundation in AI and data science.</h2>
+        </div>
+        <div class="education-card glass reveal">
+          <div>
+            <h3>Vimal Jyothi Engineering College</h3>
+            <p>B.Tech in Artificial Intelligence and Data Science</p>
+          </div>
+          <div class="education-meta">
+            <span class="pill">CGPA: 8.82</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Projects</p>
+          <h2>Selected work across RAG, computer vision, predictive ML, and data analysis.</h2>
+        </div>
+        <div class="project-filters reveal" role="group" aria-label="Project filters">
+          <button class="filter-btn active" data-filter="all" type="button">All</button>
+          <button class="filter-btn" data-filter="genai" type="button">GenAI</button>
+          <button class="filter-btn" data-filter="cv" type="button">Computer Vision</button>
+          <button class="filter-btn" data-filter="ml" type="button">Machine Learning</button>
+          <button class="filter-btn" data-filter="data" type="button">Data Analysis</button>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card glass reveal" data-category="genai ml">
+            <div class="project-image-wrap">
+              <img
+                src="screenshots/lawllama.jpg"
+                alt="LAWLLAMA project screenshot"
+                loading="lazy"
+                class="project-image"
+              />
+            </div>
+            <div class="project-content">
+              <div class="project-top">
+                <h3>LAWLLAMA</h3>
+                <span class="project-badge">GenAI / RAG</span>
+              </div>
+              <p>
+                AI legal assistant built using Flask, FAISS, RAG, BART, and Llama 3 through the Groq API.
+              </p>
+              <div class="tech-tags">
+                <span>Python</span>
+                <span>Flask</span>
+                <span>FAISS</span>
+                <span>Transformers</span>
+                <span>Groq</span>
+                <span>Llama 3</span>
+                <span>RAG</span>
+              </div>
+              <div class="card-actions">
+                <a class="btn btn-small btn-secondary" href="[github.com](https://github.com/Ak-oo7/LAWLLAMA)" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+          <article class="project-card glass reveal" data-category="cv ml">
+            <div class="project-image-wrap">
+              <img
+                src="screenshots/ai-vs-human.jpg"
+                alt="AI vs Human Image Classification project screenshot"
+                loading="lazy"
+                class="project-image"
+              />
+            </div>
+            <div class="project-content">
+              <div class="project-top">
+                <h3>AI vs Human Image Classification</h3>
+                <span class="project-badge">Computer Vision</span>
+              </div>
+              <p>
+                CNN-based model to distinguish AI-generated images from real photographs using Haar Wavelet Transform, DCT, and Gabor Filters.
+              </p>
+              <div class="tech-tags">
+                <span>TensorFlow</span>
+                <span>Keras</span>
+                <span>OpenCV</span>
+                <span>CNN</span>
+                <span>Deep Learning</span>
+              </div>
+              <div class="card-actions">
+                <a class="btn btn-small btn-secondary" href="[github.com](https://github.com/Ak-oo7/AI-vs-Human-Image-Classification)" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+          <article class="project-card glass reveal" data-category="ml">
+            <div class="project-image-wrap">
+              <img
+                src="screenshots/heart-failure.jpg"
+                alt="Heart Failure Prediction project screenshot"
+                loading="lazy"
+                class="project-image"
+              />
+            </div>
+            <div class="project-content">
+              <div class="project-top">
+                <h3>Heart Failure Prediction</h3>
+                <span class="project-badge">Predictive ML</span>
+              </div>
+              <p>
+                Machine Learning model predicting heart failure using clinical data, feature engineering, and Random Forest.
+              </p>
+              <div class="tech-tags">
+                <span>Python</span>
+                <span>Scikit-learn</span>
+                <span>Random Forest</span>
+                <span>Feature Engineering</span>
+              </div>
+              <div class="card-actions">
+                <a class="btn btn-small btn-secondary" href="[github.com](https://github.com/Ak-oo7/HEART-FAILURE-MODEL)" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+          <article class="project-card glass reveal" data-category="data">
+            <div class="project-image-wrap">
+              <img
+                src="screenshots/imdb-analysis.jpg"
+                alt="IMDB Rating Analysis project screenshot"
+                loading="lazy"
+                class="project-image"
+              />
+            </div>
+            <div class="project-content">
+              <div class="project-top">
+                <h3>IMDB Rating Analysis</h3>
+                <span class="project-badge">EDA</span>
+              </div>
+              <p>
+                Exploratory Data Analysis on 1000 movies using Pandas, Matplotlib, and Seaborn.
+              </p>
+              <div class="tech-tags">
+                <span>Pandas</span>
+                <span>Matplotlib</span>
+                <span>Seaborn</span>
+                <span>EDA</span>
+              </div>
+              <div class="card-actions">
+                <a class="btn btn-small btn-secondary" href="[github.com](https://github.com/Ak-oo7/IMDB-RATING-ANALYSIS)" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+          <article class="project-card glass reveal" data-category="ml cv data">
+            <div class="project-image-wrap">
+              <img
+                src="screenshots/ieee-ml-projects.jpg"
+                alt="IEEE ML Projects screenshot"
+                loading="lazy"
+                class="project-image"
+              />
+            </div>
+            <div class="project-content">
+              <div class="project-top">
+                <h3>IEEE ML Projects</h3>
+                <span class="project-badge">Multi-Project Suite</span>
+              </div>
+              <p>
+                Collection of IEEE ML projects including Customer Segmentation, Plant Disease Detection, Diabetes Prediction, and Salary Prediction.
+              </p>
+              <div class="tech-tags">
+                <span>Machine Learning</span>
+                <span>Computer Vision</span>
+                <span>Data Science</span>
+                <span>Prediction</span>
+              </div>
+              <div class="card-actions">
+                <a class="btn btn-small btn-secondary" href="[github.com](https://github.com/Ak-oo7/IEEE-ML-Projects)" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Skills</p>
+          <h2>Core technical strengths across programming, AI, data, and tooling.</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card glass reveal">
+            <h3>Programming</h3>
+            <div class="skill-list">
+              <span>Python</span>
+              <span>Java</span>
+              <span>C</span>
+              <span>SQL</span>
+              <span>R</span>
+            </div>
+          </div>
+          <div class="skill-card glass reveal">
+            <h3>AI / ML</h3>
+            <div class="skill-list">
+              <span>Machine Learning</span>
+              <span>Deep Learning</span>
+              <span>TensorFlow</span>
+              <span>PyTorch</span>
+              <span>Scikit-learn</span>
+            </div>
+          </div>
+          <div class="skill-card glass reveal">
+            <h3>Computer Vision & NLP</h3>
+            <div class="skill-list">
+              <span>Computer Vision</span>
+              <span>OpenCV</span>
+              <span>CNN</span>
+              <span>NLP</span>
+              <span>LLMs</span>
+            </div>
+          </div>
+          <div class="skill-card glass reveal">
+            <h3>Generative AI</h3>
+            <div class="skill-list">
+              <span>Generative AI</span>
+              <span>RAG</span>
+              <span>Hugging Face</span>
+              <span>Transformers</span>
+            </div>
+          </div>
+          <div class="skill-card glass reveal">
+            <h3>Data</h3>
+            <div class="skill-list">
+              <span>Pandas</span>
+              <span>NumPy</span>
+              <span>Matplotlib</span>
+              <span>Seaborn</span>
+              <span>XGBoost</span>
+              <span>Apache Spark</span>
+            </div>
+          </div>
+          <div class="skill-card glass reveal">
+            <h3>Tools</h3>
+            <div class="skill-list">
+              <span>Git</span>
+              <span>GitHub</span>
+              <span>VS Code</span>
+              <span>Jupyter</span>
+              <span>FastAPI</span>
+              <span>Flask</span>
+              <span>MySQL</span>
+            </div>
+          </div>
+        </div>
+        <div class="skill-bars glass reveal">
+          <div class="skill-bar-item">
+            <div class="skill-bar-label">
+              <span>Machine Learning</span>
+              <span>92%</span>
+            </div>
+            <div class="skill-bar"><span data-width="92%"></span></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label">
+              <span>Deep Learning</span>
+              <span>88%</span>
+            </div>
+            <div class="skill-bar"><span data-width="88%"></span></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label">
+              <span>Computer Vision</span>
+              <span>84%</span>
+            </div>
+            <div class="skill-bar"><span data-width="84%"></span></div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="skill-bar-label">
+              <span>Generative AI / RAG</span>
+              <span>86%</span>
+            </div>
+            <div class="skill-bar"><span data-width="86%"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Experience</p>
+          <h2>Leadership, mentoring, and hands-on technical growth.</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass">
+              <h3>IEEE SB VJEC</h3>
+              <p class="timeline-role">Design Lead</p>
+              <p>Leading design initiatives, visual communication, and creative direction for technical programs and student activities.</p>
+            </div>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass">
+              <h3>IEEE RAS SBC VJEC</h3>
+              <p class="timeline-role">Design Lead</p>
+              <p>Contributing design leadership for robotics and automation-focused student chapter activities and outreach.</p>
+            </div>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass">
+              <h3>AI Arcade Internship</h3>
+              <p class="timeline-role">AI/ML Internship Lead</p>
+              <p>Led an AI/ML internship experience, mentoring students and guiding implementation across practical machine learning tasks.</p>
+            </div>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass">
+              <h3>IBM SkillsBuild</h3>
+              <p class="timeline-role">AI Automation & Agentic AI Internship - Ongoing</p>
+              <p>Currently engaged in applied learning around AI automation, workflows, and agentic AI systems.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="certifications">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Certifications</p>
+          <h2>Industry-aligned certifications strengthening analytics and AI foundations.</h2>
+        </div>
+        <div class="cert-grid">
+          <div class="cert-card glass reveal"><span>IBM</span><h3>Data Analysis Using Python</h3></div>
+          <div class="cert-card glass reveal"><span>IBM</span><h3>Data Fundamentals</h3></div>
+          <div class="cert-card glass reveal"><span>IBM</span><h3>Big Data Foundations</h3></div>
+          <div class="cert-card glass reveal"><span>Microsoft</span><h3>Power BI</h3></div>
+          <div class="cert-card glass reveal"><span>LinkedIn Learning</span><h3>Machine Learning Foundations</h3></div>
+          <div class="cert-card glass reveal"><span>IBM SkillsBuild</span><h3>AI Automation & Agentic AI</h3></div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="github">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">GitHub Integration</p>
+          <h2>Live GitHub insights and dynamic repository showcase.</h2>
+        </div>
+        <div class="github-stats-grid reveal">
+          <img
+            class="github-stat-card glass"
+            src="[github-readme-stats.vercel.app](https://github-readme-stats.vercel.app/api?username=Ak-oo7&show_icons=true&theme=transparent&hide_border=true&title_color=9fb3ff&text_color=e5e7eb&icon_color=7c9cff&ring_color=7c9cff)"
+            alt="GitHub stats card for Abhinav I"
+            loading="lazy"
+          />
+          <img
+            class="github-stat-card glass"
+            src="[github-readme-streak-stats.herokuapp.com](https://github-readme-streak-stats.herokuapp.com/?user=Ak-oo7&theme=transparent&hide_border=true&stroke=7c9cff&ring=7c9cff&fire=7c9cff&currStreakLabel=e5e7eb)"
+            alt="GitHub streak stats for Abhinav I"
+            loading="lazy"
+          />
+          <img
+            class="github-stat-card glass"
+            src="[github-readme-stats.vercel.app](https://github-readme-stats.vercel.app/api/top-langs/?username=Ak-oo7&layout=compact&theme=transparent&hide_border=true&title_color=9fb3ff&text_color=e5e7eb)"
+            alt="Most used languages on GitHub for Abhinav I"
+            loading="lazy"
+          />
+          <img
+            class="github-stat-card glass"
+            src="[ghchart.rshah.org](https://ghchart.rshah.org/7c9cff/Ak-oo7)"
+            alt="GitHub contribution graph for Abhinav I"
+            loading="lazy"
+          />
+        </div>
+        <div class="repo-section reveal">
+          <div class="repo-header">
+            <h3>Featured repositories</h3>
+            <p>Fetched dynamically from GitHub.</p>
+          </div>
+          <div id="repoGrid" class="repo-grid" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Contact</p>
+          <h2>Let's build something intelligent and impactful.</h2>
+        </div>
+        <div class="contact-card glass reveal">
+          <div class="contact-info">
+            <a href="mailto:abhinav@example.com" class="contact-item">
+              <span>Email</span>
+              <strong>abhinav@example.com</strong>
+            </a>
+            <a href="[github.com](https://github.com/Ak-oo7)" class="contact-item" target="_blank" rel="noopener noreferrer">
+              <span>GitHub</span>
+              <strong>github.com/Ak-oo7</strong>
+            </a>
+            <a href="[linkedin.com](https://www.linkedin.com/)" class="contact-item" target="_blank" rel="noopener noreferrer">
+              <span>LinkedIn</span>
+              <strong>linkedin.com</strong>
+            </a>
+          </div>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="resume.pdf" download>Download Resume</a>
+            <a class="btn btn-secondary" href="mailto:abhinav@example.com">Send Email</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Abhinav I. All rights reserved.</p>
+      <p>Made with ❤️ by Abhinav I</p>
+    </div>
+  </footer>
+  <button id="backToTop" class="back-to-top" type="button" aria-label="Back to top">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>

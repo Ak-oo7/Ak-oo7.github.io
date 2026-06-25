@@ -1,0 +1,298 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const root = document.documentElement;
+  const body = document.body;
+  const loader = document.getElementById("loader");
+  const themeToggle = document.getElementById("themeToggle");
+  const menuToggle = document.getElementById("menuToggle");
+  const nav = document.getElementById("nav");
+  const backToTop = document.getElementById("backToTop");
+  const scrollProgress = document.getElementById("scrollProgress");
+  const yearEl = document.getElementById("year");
+  const typedText = document.getElementById("typedText");
+  const repoGrid = document.getElementById("repoGrid");
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+  const skillBars = document.querySelectorAll(".skill-bar span");
+  const cursorDot = document.getElementById("cursorDot");
+  const cursorRing = document.getElementById("cursorRing");
+  const sections = document.querySelectorAll("main section[id]");
+  const navLinks = document.querySelectorAll(".nav a");
+  const roles = [
+    "AI Engineer",
+    "Machine Learning Engineer",
+    "Data Scientist",
+    "Generative AI Developer"
+  ];
+  let roleIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+  function typeRoles() {
+    if (!typedText) return;
+    const current = roles[roleIndex];
+    if (!deleting) {
+      typedText.textContent = current.slice(0, charIndex + 1);
+      charIndex++;
+      if (charIndex === current.length) {
+        deleting = true;
+        setTimeout(typeRoles, 1400);
+        return;
+      }
+    } else {
+      typedText.textContent = current.slice(0, charIndex - 1);
+      charIndex--;
+      if (charIndex === 0) {
+        deleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+      }
+    }
+    setTimeout(typeRoles, deleting ? 45 : 85);
+  }
+  typeRoles();
+  function initTheme() {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      root.setAttribute("data-theme", storedTheme);
+    }
+  }
+  initTheme();
+  themeToggle?.addEventListener("click", () => {
+    const currentTheme = root.getAttribute("data-theme") || "dark";
+    const nextTheme = currentTheme === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", nextTheme);
+    localStorage.setItem("theme", nextTheme);
+  });
+  menuToggle?.addEventListener("click", () => {
+    const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+    menuToggle.setAttribute("aria-expanded", String(!expanded));
+    nav.classList.toggle("show");
+    body.classList.toggle("menu-open");
+  });
+  navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      nav.classList.remove("show");
+      body.classList.remove("menu-open");
+      menuToggle?.setAttribute("aria-expanded", "false");
+    });
+  });
+  function updateScrollUI() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    scrollProgress.style.width = `${progress}%`;
+    if (scrollTop > 500) {
+      backToTop.classList.add("show");
+    } else {
+      backToTop.classList.remove("show");
+    }
+    let currentSectionId = "";
+    sections.forEach((section) => {
+      const offsetTop = section.offsetTop - 140;
+      if (scrollTop >= offsetTop) {
+        currentSectionId = section.getAttribute("id");
+      }
+    });
+    navLinks.forEach((link) => {
+      link.classList.toggle("active", link.getAttribute("href") === `#${currentSectionId}`);
+    });
+  }
+  window.addEventListener("scroll", updateScrollUI, { passive: true });
+  updateScrollUI();
+  backToTop?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+  const revealElements = document.querySelectorAll(".reveal");
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+          if (entry.target.classList.contains("skill-bars")) {
+            skillBars.forEach((bar) => {
+              bar.style.width = bar.dataset.width || "0%";
+            });
+          }
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+  revealElements.forEach((el) => revealObserver.observe(el));
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      filterButtons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+      const filter = button.dataset.filter;
+      projectCards.forEach((card) => {
+        const categories = card.dataset.category || "";
+        const visible = filter === "all" || categories.includes(filter);
+        card.classList.toggle("hidden-card", !visible);
+      });
+    });
+  });
+  async function fetchRepos() {
+    if (!repoGrid) return;
+    repoGrid.innerHTML = `
+      <article class="repo-card glass">
+        <h3>Loading repositories...</h3>
+        <p>Fetching latest projects from GitHub.</p>
+      </article>
+    `;
+    try {
+      const response = await fetch("[api.github.com](https://api.github.com/users/Ak-oo7/repos?sort=updated&per_page=6)");
+      if (!response.ok) {
+        throw new Error("Failed to fetch repositories");
+      }
+      const repos = await response.json();
+      const filtered = repos
+        .filter((repo) => !repo.fork)
+        .sort((a, b) => (b.stargazers_count + b.watchers_count) - (a.stargazers_count + a.watchers_count))
+        .slice(0, 6);
+      repoGrid.innerHTML = "";
+      filtered.forEach((repo) => {
+        const article = document.createElement("article");
+        article.className = "repo-card glass reveal revealed";
+        article.innerHTML = `
+          <h3>${repo.name}</h3>
+          <p>${repo.description ? repo.description : "Repository available on GitHub."}</p>
+          <div class="repo-meta">
+            <span>★ ${repo.stargazers_count}</span>
+            <span>${repo.language || "Code"}</span>
+          </div>
+          <a class="btn btn-small btn-secondary" href="${repo.html_url}" target="_blank" rel="noopener noreferrer">View Repository</a>
+        `;
+        repoGrid.appendChild(article);
+      });
+      if (filtered.length === 0) {
+        repoGrid.innerHTML = `
+          <article class="repo-card glass">
+            <h3>No repositories found</h3>
+            <p>GitHub did not return public repositories for display.</p>
+          </article>
+        `;
+      }
+    } catch (error) {
+      repoGrid.innerHTML = `
+        <article class="repo-card glass">
+          <h3>Unable to load repositories</h3>
+          <p>GitHub API is currently unavailable or rate-limited. Please check the GitHub profile directly.</p>
+          <a class="btn btn-small btn-secondary" href="[github.com](https://github.com/Ak-oo7)" target="_blank" rel="noopener noreferrer">Open GitHub</a>
+        </article>
+      `;
+      console.error(error);
+    }
+  }
+  fetchRepos();
+  yearEl.textContent = new Date().getFullYear();
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      loader?.classList.add("hidden");
+    }, 500);
+  });
+  function initCursor() {
+    if (!cursorDot || !cursorRing || window.innerWidth <= 640) return;
+    window.addEventListener("mousemove", (e) => {
+      const { clientX, clientY } = e;
+      cursorDot.style.left = `${clientX}px`;
+      cursorDot.style.top = `${clientY}px`;
+      requestAnimationFrame(() => {
+        cursorRing.style.left = `${clientX}px`;
+        cursorRing.style.top = `${clientY}px`;
+      });
+    });
+    const hoverTargets = document.querySelectorAll("a, button, .project-card, .skill-card, .repo-card, .cert-card");
+    hoverTargets.forEach((item) => {
+      item.addEventListener("mouseenter", () => {
+        cursorRing.style.width = "54px";
+        cursorRing.style.height = "54px";
+        cursorRing.style.borderColor = "rgba(89, 208, 255, 0.85)";
+      });
+      item.addEventListener("mouseleave", () => {
+        cursorRing.style.width = "34px";
+        cursorRing.style.height = "34px";
+        cursorRing.style.borderColor = "rgba(124, 156, 255, 0.5)";
+      });
+    });
+  }
+  initCursor();
+  function initParticles() {
+    const canvas = document.getElementById("particles-canvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+    let animationId;
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      createParticles();
+    }
+    function createParticles() {
+      particles = [];
+      const count = Math.max(30, Math.floor(window.innerWidth / 35));
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 2 + 0.6,
+          dx: (Math.random() - 0.5) * 0.25,
+          dy: (Math.random() - 0.5) * 0.25
+        });
+      }
+    }
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const theme = root.getAttribute("data-theme");
+      const color = theme === "light" ? "rgba(79, 111, 255, 0.18)" : "rgba(124, 156, 255, 0.18)";
+      particles.forEach((p) => {
+        p.x += p.dx;
+        p.y += p.dy;
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = color;
+        ctx.fill();
+      });
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const a = particles[i];
+          const b = particles[j];
+          const dist = Math.hypot(a.x - b.x, a.y - b.y);
+          if (dist < 110) {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = theme === "light"
+              ? `rgba(79, 111, 255, ${0.12 - dist / 1000})`
+              : `rgba(124, 156, 255, ${0.12 - dist / 1000})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+      animationId = requestAnimationFrame(drawParticles);
+    }
+    resizeCanvas();
+    drawParticles();
+    window.addEventListener("resize", resizeCanvas);
+    window.addEventListener("beforeunload", () => {
+      cancelAnimationFrame(animationId);
+    });
+  }
+  initParticles();
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      const targetId = this.getAttribute("href");
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        const headerOffset = 100;
+        const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    });
+  });
+});
